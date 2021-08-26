@@ -1,0 +1,33 @@
+<h1 id="tableLabel">Remote</h1>
+
+<p>
+  Remote posts are pulled from a third-party API. This component demonstrates fetching data from the SauravKanchan/NewsAPI.
+</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<div *ngFor="let post of posts">
+  <app-post [post]="post" [enableSetup]="false"></app-post>
+</div>
+
+
+<!--<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>Post Number</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Content</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts">
+      <td>{{ forecast.PostNumber }}</td>
+      <td>{{ forecast.Title }}</td>
+      <td>{{ forecast.Author }}</td>
+      <td>{{ forecast.Content }}</td>
+      <td>{{ forecast.Date }}</td>
+    </tr>
+  </tbody>
+</table>-->

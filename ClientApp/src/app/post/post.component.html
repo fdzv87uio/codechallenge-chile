@@ -1,0 +1,48 @@
+<div class="container fluid">
+  <div class="row post-wrapper">
+    <div class="col-md-5 col-sm-12">
+      <div class="post-content" *ngIf="setupOpen != true">
+        <h1 class="post-title">{{post.title}}</h1>
+        <h4 class="post-subtitle">{{post.description}}</h4>
+        <p class="post-info">written by: {{post.author}}, {{post.publishedAt}}</p>
+        <div class="control-panel" *ngIf="enableSetup === true">
+          <button (click)="setupOpen = !setupOpen" class=" btn btn-primary">Edit</button>
+          <button (click)="deleteItem(post.postNumber)" class=" btn btn-secondary">Delete</button>
+        </div>
+
+      </div>
+      <div class="post-form" *ngIf="setupOpen == true">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+          <div class="form-group">
+            <input  type="hidden" ngModel name="postNumber" value="{{post.postNumber}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="title" placeholder="{{post.title}}"  value="{{post.title}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="description" placeholder="{{post.description}}" value="{{post.description}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="author" placeholder="{{post.author}}" value="{{post.author}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="publishedAt" placeholder="{{post.publishedAt}}" value="{{post.publishedAt}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="urlToImage" placeholder="{{post.urlToImage}}" value="{{post.urlToImage}}" />
+          </div>
+          <div class="form-group">
+            <input  type="text" class="form-control" ngModel name="url" placeholder="{{post.url}}" value="{{post.url}}" />
+          </div>
+          <div class="control-panel">
+            <button type="submit" class=" btn btn-primary">Save</button>
+            <button (click)="setupOpen = !setupOpen"class=" btn btn-secondary">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7 col-sm-12">
+      <img src="{{post.urlToImage}}" class="post-image" />
+    </div>
+  </div>
+</div>

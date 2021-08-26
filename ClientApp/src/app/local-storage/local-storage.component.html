@@ -1,0 +1,12 @@
+<h1 id="tableLabel">LOCAL </h1>
+
+<p>This component demonstrates fetching data from the Browser's local Storage' (including CRUD methods/functions).</p>
+<button class="btn btn-primary" (click)="createItem()"> + New Post</button>
+  
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+
+<div *ngFor="let post of posts">
+  <app-post [post]="post" [enableSetup]="true" [deleteItem]="deleteItem"></app-post>
+</div>
+
